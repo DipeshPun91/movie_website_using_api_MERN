@@ -26,16 +26,16 @@ const Header = () => {
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="hover:text-red-500 font-medium">
+            <Link to="/" className="hover:text-red-500 font-medium">
               Home
             </Link>
-            <Link href="#" className="hover:text-red-500 font-medium">
+            <Link to="/movies" className="hover:text-red-500 font-medium">
               Movies
             </Link>
-            <Link href="#" className="hover:text-red-500 font-medium">
+            <Link to="#" className="hover:text-red-500 font-medium">
               TV Shows
             </Link>
-            <Link href="#" className="hover:text-red-500 font-medium">
+            <Link to="#" className="hover:text-red-500 font-medium">
               My List
             </Link>
           </nav>
@@ -80,16 +80,19 @@ const Header = () => {
               <FaSearch className="absolute left-3 top-3 text-gray-400" />
             </form>
             <nav className="flex flex-col space-y-3">
-              <Link href="#" className="hover:text-red-500 font-medium py-2">
+              <Link to="/" className="hover:text-red-500 font-medium py-2">
                 Home
               </Link>
-              <Link href="#" className="hover:text-red-500 font-medium py-2">
+              <Link
+                to="/movies"
+                className="hover:text-red-500 font-medium py-2"
+              >
                 Movies
               </Link>
-              <Link href="#" className="hover:text-red-500 font-medium py-2">
+              <Link to="#" className="hover:text-red-500 font-medium py-2">
                 TV Shows
               </Link>
-              <Link href="#" className="hover:text-red-500 font-medium py-2">
+              <Link to="#" className="hover:text-red-500 font-medium py-2">
                 My List
               </Link>
               <div className="flex items-center justify-between pt-4 border-t border-gray-700">
