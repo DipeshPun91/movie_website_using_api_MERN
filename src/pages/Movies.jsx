@@ -19,6 +19,17 @@ import {
   getActionMovies,
 } from "../services/api";
 
+// Category options for filter
+const CATEGORIES = [
+  { id: "all", name: "All Categories" },
+  { id: "popular", name: "Popular" },
+  { id: "topRated", name: "Top Rated" },
+  { id: "horror", name: "Horror" },
+  { id: "action", name: "Action" },
+  { id: "comedy", name: "Comedy" },
+  { id: "sciFi", name: "Sci-Fi" },
+];
+
 const Movies = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -32,6 +43,7 @@ const Movies = () => {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("all"); // Default to show all
 
   useEffect(() => {
     const fetchAllMovies = async () => {
@@ -66,6 +78,13 @@ const Movies = () => {
 
     fetchAllMovies();
   }, []);
+
+  // Filter movies based on search query and selected category
+  const filterMovies = (movies) => {
+    return movies.filter((movie) =>
+      movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  };
 
   if (loading) {
     return (
@@ -111,47 +130,81 @@ const Movies = () => {
             <FaSearch className="absolute left-5 top-4 text-gray-400" />
           </form>
 
-          <div className="w-full md:w-auto">
+          <div className="w-full md:w-auto relative">
             <button
               onClick={() => setShowFilters(!showFilters)}
               className="flex items-center bg-gray-800 hover:bg-gray-700 py-3 px-6 rounded-full"
             >
               <FaFilter className="mr-2" />
-              Filters
+              Categories
               {showFilters ? (
                 <FaChevronUp className="ml-2" />
               ) : (
                 <FaChevronDown className="ml-2" />
               )}
             </button>
+
+            {/* Category dropdown */}
+            {showFilters && (
+              <div className="absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg z-10 p-2">
+                {CATEGORIES.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => {
+                      setSelectedCategory(category.id);
+                      setShowFilters(false);
+                    }}
+                    className={`w-full text-left px-4 py-2 text-sm rounded ${
+                      selectedCategory === category.id
+                        ? "bg-red-600"
+                        : "hover:bg-gray-700"
+                    }`}
+                  >
+                    {category.name}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
         <div className="space-y-12">
-          <MovieCard
-            title="Popular"
-            movies={movieCategories.popular.slice(0, 8)}
-          />
-          <MovieCard
-            title="Top Rated"
-            movies={movieCategories.topRated.slice(0, 8)}
-          />
-          <MovieCard
-            title="Horror"
-            movies={movieCategories.horror.slice(0, 8)}
-          />
-          <MovieCard
-            title="Action"
-            movies={movieCategories.action.slice(0, 8)}
-          />
-          <MovieCard
-            title="Comedy"
-            movies={movieCategories.comedy.slice(0, 8)}
-          />
-          <MovieCard
-            title="Sci-Fi"
-            movies={movieCategories.sciFi.slice(0, 8)}
-          />
+          {selectedCategory === "all" ? (
+            <>
+              <MovieCard
+                title="Popular"
+                movies={filterMovies(movieCategories.popular).slice(0, 8)}
+              />
+              <MovieCard
+                title="Top Rated"
+                movies={filterMovies(movieCategories.topRated).slice(0, 8)}
+              />
+              <MovieCard
+                title="Horror"
+                movies={filterMovies(movieCategories.horror).slice(0, 8)}
+              />
+              <MovieCard
+                title="Action"
+                movies={filterMovies(movieCategories.action).slice(0, 8)}
+              />
+              <MovieCard
+                title="Comedy"
+                movies={filterMovies(movieCategories.comedy).slice(0, 8)}
+              />
+              <MovieCard
+                title="Sci-Fi"
+                movies={filterMovies(movieCategories.sciFi).slice(0, 8)}
+              />
+            </>
+          ) : (
+            <MovieCard
+              title={CATEGORIES.find((c) => c.id === selectedCategory).name}
+              movies={filterMovies(movieCategories[selectedCategory]).slice(
+                0,
+                8
+              )}
+            />
+          )}
         </div>
       </div>
     </div>
