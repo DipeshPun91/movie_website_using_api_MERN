@@ -19,7 +19,6 @@ import {
   getActionMovies,
 } from "../services/api";
 
-// Category options for filter
 const CATEGORIES = [
   { id: "all", name: "All Categories" },
   { id: "popular", name: "Popular" },
@@ -43,7 +42,7 @@ const Movies = () => {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState("all"); // Default to show all
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
     const fetchAllMovies = async () => {
@@ -79,7 +78,6 @@ const Movies = () => {
     fetchAllMovies();
   }, []);
 
-  // Filter movies based on search query and selected category
   const filterMovies = (movies) => {
     return movies.filter((movie) =>
       movie.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -144,7 +142,6 @@ const Movies = () => {
               )}
             </button>
 
-            {/* Category dropdown */}
             {showFilters && (
               <div className="absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg z-10 p-2">
                 {CATEGORIES.map((category) => (

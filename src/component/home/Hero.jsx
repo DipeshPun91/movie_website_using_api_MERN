@@ -53,39 +53,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      <div className="container mx-auto px-6 py-16 -mt-20 relative z-30 bg-gray-800 rounded-lg shadow-2xl">
-        <div className="flex flex-col md:flex-row">
-          <div className="md:w-1/3 mb-8 md:mb-0">
-            <div className="aspect-w-16 aspect-h-9 bg-gray-700 rounded-lg overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                alt={featuredMovie.title}
-                className="object-cover w-full h-full"
-              />
-            </div>
-          </div>
-          <div className="md:w-2/3 md:pl-12">
-            <div className="flex items-center mb-4">
-              <h2 className="text-3xl font-bold mr-4">{featuredMovie.title}</h2>
-              <span className="text-gray-400">({featuredMovie.year})</span>
-            </div>
-            <div className="flex items-center mb-6">
-              <div className="flex items-center mr-4">
-                <FaStar className="text-yellow-400 mr-1" />
-                <span>{featuredMovie.rating}/5</span>
-              </div>
-              <span className="bg-red-600 text-xs px-2 py-1 rounded">NEW</span>
-            </div>
-            <p className="text-lg text-gray-300 mb-8">
-              {featuredMovie.description}
-            </p>
-            <button className="bg-red-600 hover:bg-red-700 px-6 py-2 rounded-md font-semibold">
-              Watch Trailer
-            </button>
-          </div>
-        </div>
-      </div>
     </section>
   );
 };
