@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  FaPlay,
-  FaSearch,
-  FaStar,
-  FaFilter,
-  FaChevronDown,
-  FaChevronUp,
-} from "react-icons/fa";
-import { MdMovie, MdHighQuality } from "react-icons/md";
+import { FaSearch, FaFilter, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import Hero from "../component/movies/Hero";
 import MovieCard from "../component/ui/MovieCard";
 import {
