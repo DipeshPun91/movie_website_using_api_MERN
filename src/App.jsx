@@ -6,6 +6,7 @@ import Movies from "./pages/guest/Movies.jsx";
 import Footer from "./component/partials/Footer.jsx";
 import SignIn from "./pages/auth/SignIn.jsx";
 import SignUp from "./pages/auth/SignUp.jsx";
+import Dashboard from "./pages/authenticated/Dashboard.jsx";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/movies" element={<Movies />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
     </div>
