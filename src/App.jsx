@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home.jsx";
+import Home from "./pages/guest/Home.jsx";
 import Header from "./component/partials/Header.jsx";
-import Movies from "./pages/Movies.jsx";
+import Movies from "./pages/guest/Movies.jsx";
 import Footer from "./component/partials/Footer.jsx";
 import SignIn from "./pages/auth/SignIn.jsx";
 import SignUp from "./pages/auth/SignUp.jsx";

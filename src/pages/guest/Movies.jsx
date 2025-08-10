@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaSearch, FaFilter, FaChevronDown, FaChevronUp } from "react-icons/fa";
-import Hero from "../component/movies/Hero";
-import MovieCard from "../component/ui/MovieCard";
+import Hero from "../../component/movies/Hero";
+import MovieCard from "../../component/ui/MovieCard";
 import {
   getPopularMovies,
   getTopRatedMovies,
@@ -9,7 +9,7 @@ import {
   getSciFiMovies,
   getComedyMovies,
   getActionMovies,
-} from "../services/api";
+} from "../../services/api";
 
 const CATEGORIES = [
   { id: "all", name: "All Categories" },
