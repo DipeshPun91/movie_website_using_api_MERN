@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FaPlay, FaStar } from "react-icons/fa";
 import { MdHighQuality } from "react-icons/md";
 
 const MovieCard = ({ title, movies }) => {
+  const navigate = useNavigate();
+
   if (!movies || movies.length === 0) return null;
+
+  const handleMovieClick = (movieId) => {
+    navigate(`/movies/${movieId}`);
+  };
 
   return (
     <div className="mb-12">
@@ -12,7 +19,8 @@ const MovieCard = ({ title, movies }) => {
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 group"
+            className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 group cursor-pointer"
+            onClick={() => handleMovieClick(movie.id)}
           >
             <div className="relative">
               <img
@@ -29,7 +37,12 @@ const MovieCard = ({ title, movies }) => {
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <button className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md font-semibold flex items-center">
+                <button
+                  className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md font-semibold flex items-center"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                >
                   <FaPlay className="mr-2" /> Play
                 </button>
               </div>
