@@ -7,6 +7,7 @@ import Footer from "./component/partials/Footer.jsx";
 import SignIn from "./pages/auth/SignIn.jsx";
 import SignUp from "./pages/auth/SignUp.jsx";
 import Dashboard from "./pages/authenticated/Dashboard.jsx";
+import MovieDetail from "./pages/authenticated/MovieDetail.jsx";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:movieId" element={<MovieDetail />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
